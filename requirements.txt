@@ -5,6 +5,7 @@ Werkzeug==2.0.1
 autocorrect==2.5.0
 click==8.0.1
 gensim==4.0.1
+gunicorn==20.1.0
 itsdangerous==2.0.1
 joblib==1.0.1
 nltk==3.6.2
