@@ -19,6 +19,7 @@ def preprocess_route(filename, user_id):
         URL_PANEL = os.environ.get("URL_PANEL")
         params = kwargs.get('post_data')
         document = params["text"]
+        token = params["token"]
 
         try:
             preprocessed = preprocess(document)
@@ -34,6 +35,7 @@ def preprocess_route(filename, user_id):
 
             response_json[f'Doc_embedding'] = document_embedding.tolist()
             response_json['status_code'] = 200
+            response_json['token'] = token
             requests.post(URL_PANEL + "/" + filename + "/" + str(user_id), json=response_json)
         else:
             message = {"info": "Problem with text preprocessing",
