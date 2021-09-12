@@ -33,7 +33,7 @@ def preprocess_route(filename, user_id):
                 response_json[f'Page{i}'] = page
                 response_json[f'Embedding{i}'] = page_embeddings[i].tolist()
 
-            response_json[f'Doc_embedding'] = document_embedding.tolist()
+            response_json['Doc_embedding'] = document_embedding.tolist()
             response_json['status_code'] = 200
             response_json['token'] = token
             requests.post(URL_PANEL + "/" + filename + "/" + str(user_id), json=response_json)

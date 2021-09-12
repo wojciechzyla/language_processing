@@ -52,6 +52,7 @@ def preprocess(document: List[Text], query=False) -> Tuple[List[List[List[Text]]
         txt = re.sub(r'\b[a-zA-ZĄąĆćęĘŁłŃńÓóŚśŹźŻż]{1,3}\b', "", txt)
         # tokenize sentences
         sentence_tokens = sent_tokenize(txt)
+
         for token in sentence_tokens:
             # remove words containing non word symbols like 'exampl)e'
             token_txt = re.sub(r'(\w*[^a-zA-Z\n\sĄąĆćęĘŁłŃńÓóŚśŹźŻż]\w*)+', "", token)
@@ -81,9 +82,11 @@ def preprocess(document: List[Text], query=False) -> Tuple[List[List[List[Text]]
             # remove line breaks
             token_txt = re.sub(r'\n+', "", token_txt)
             token_txt = word_tokenize(token_txt)
+
             if query or (not query and len(token_txt) > 3):
                 tokenized_document[page].append(token_txt)
                 page_embeddings[page] = np.mean(np.array([get_embedding(x) for x in token_txt]), axis=0)
+
     document_embedding = np.mean(np.array(page_embeddings), axis=0)
 
     return tokenized_document, document_embedding, page_embeddings
