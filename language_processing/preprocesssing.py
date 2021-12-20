@@ -27,7 +27,7 @@ def preprocess(document: List[Text], query=False) -> Tuple[List[List[List[Text]]
     Function is used to preprocess and tokenize documents
     :param document: List of pages in document. One page is made of text.
     :param query: Is this preprocessing done for query or document.
-    :return: List of pages where each page is list of sentences and each sentence is list of words. Word  embedding
+    :return: List of pages where each page is list of sentences and each sentence is list of words. Word embedding
     representing the whole document. List of word embeddings representing each page.
     """
     tokenized_document = []
